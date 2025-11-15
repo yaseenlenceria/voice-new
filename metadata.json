@@ -1,0 +1,7 @@
+{
+  "name": "Stranger Voice + Text Chat",
+  "description": "A real-time voice and text chat application that connects you with random users globally using WebRTC. Features audio-only communication and a text chat panel, all powered by a Node.js signaling server.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

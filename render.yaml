@@ -1,0 +1,28 @@
+services:
+  # Backend Signaling Server
+  - type: web
+    name: voicestranger-backend
+    runtime: node
+    env: node
+    region: oregon
+    buildCommand: cd server && npm install
+    startCommand: cd server && npm start
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: ALLOWED_ORIGINS
+        value: https://voicestranger-frontend.onrender.com
+        # Update this with your actual frontend URL after deployment
+
+  # Frontend Static Site
+  - type: web
+    name: voicestranger-frontend
+    runtime: node
+    env: node
+    region: oregon
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: VITE_SIGNALING_SERVER_URL
+        value: https://voicestranger-backend.onrender.com
+        # Update this with your actual backend URL after deployment
